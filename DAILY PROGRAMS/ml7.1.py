@@ -1,16 +1,14 @@
 from sklearn.linear_model import LogisticRegression
 
-# Training data
-X = [[1], [2], [3], [6], [7], [8]]
-y = [0, 0, 0, 1, 1, 1]
+X = [
+    [9.2,90,88],[8.8,85,84],[8.5,82,80],[7.2,72,70],
+    [6.8,68,65],[9.0,91,89],[7.0,70,68],[8.7,86,83],
+    [6.5,65,60],[9.1,92,90]
+]
 
-# Create Logistic Regression model
+y = [1,1,1,0,0,1,0,1,0,1]
+
 model = LogisticRegression()
-
-# Train the model
 model.fit(X, y)
 
-# Predict the class of a new sample
-prediction = model.predict([[5]])
-
-print("Prediction:", prediction)
+print("Predicted Class:", model.predict([[8.9,88,85]]))
