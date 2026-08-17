@@ -1,27 +1,13 @@
-from sklearn.linear_model import LinearRegression
-import pandas as pd
+from sklearn.linear_model import LogisticRegression
 
-data = {
-    'Experience': [1,2,3,4,5,6,7,8,9,10],
-    'Education': [15,15,16,16,17,17,18,18,18,19],
-    'SkillScore': [60,65,70,75,80,82,85,88,90,94],
-    'Salary': [3.5,4.2,5.1,6.0,7.2,8.0,9.1,10.0,11.2,12.5]
-}
+X = [
+    [10,95,50],[8,90,45],[7,88,40],[3,65,20],[2,60,18],
+    [9,93,48],[4,70,25],[8,89,42],[2,58,15],[6,85,38]
+]
 
-df = pd.DataFrame(data)
+y = [1,1,1,0,0,1,0,1,0,1]
 
-X = df[['Experience', 'Education', 'SkillScore']]
-y = df['Salary']
-
-model = LinearRegression()
+model = LogisticRegression()
 model.fit(X, y)
 
-new_data = pd.DataFrame({
-    'Experience': [7],
-    'Education': [18],
-    'SkillScore': [86]
-})
-
-prediction = model.predict(new_data)
-
-print("Predicted Salary:", round(prediction[0], 2), "Lakhs")
+print("Predicted Class:", model.predict([[7,90,44]]))
