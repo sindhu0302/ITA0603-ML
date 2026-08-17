@@ -1,27 +1,15 @@
 from sklearn.linear_model import LogisticRegression
-import pandas as pd
 
-data = {
-    'Income': [8, 7, 6, 4, 3, 9, 5, 8, 4, 7],
-    'CreditScore': [780, 760, 730, 620, 590, 810, 650, 770, 610, 750],
-    'LoanAmount': [5, 4, 5, 8, 9, 4, 7, 5, 8, 6],
-    'LoanApproved': [1, 1, 1, 0, 0, 1, 0, 1, 0, 1]
-}
+X = [
+    [39.1,112,94],[38.8,109,95],[37.0,78,99],
+    [39.3,115,93],[36.8,74,98],[38.7,110,94],
+    [37.1,80,98],[39.0,113,92],[36.9,76,99],
+    [38.9,111,93]
+]
 
-df = pd.DataFrame(data)
-
-X = df[['Income', 'CreditScore', 'LoanAmount']]
-y = df['LoanApproved']
+y = [1,1,0,1,0,1,0,1,0,1]
 
 model = LogisticRegression()
 model.fit(X, y)
 
-new_data = pd.DataFrame({
-    'Income': [7],
-    'CreditScore': [760],
-    'LoanAmount': [5]
-})
-
-prediction = model.predict(new_data)
-
-print("Prediction:", prediction[0])
+print("Predicted Class:", model.predict([[38.7,109,94]]))
