@@ -1,5 +1,3 @@
-# 7.4 Logistic Regression - Employee Promotion
-
 from sklearn.linear_model import LogisticRegression
 
 X = [
